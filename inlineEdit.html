@@ -1,0 +1,24 @@
+<!-- <div>
+  <div *ngIf="editing">
+    <input #inlineEditControl [required]="required" (blur)="onBlur($event)" [name]="value" [(ngModel)]="value" [type]="type" [placeholder]="label" />
+  </div>
+  <div *ngIf="!editing">
+    <label class="block bold">{{label}}</label>
+    <div title="Click to edit" (click)="edit(value)" (focus)="edit(value);" tabindex="0" class="inline-edit">{{value}}&nbsp;</div>
+  </div>
+</div> -->
+
+
+<div class="templateRoot">
+  <div class="hover-edit-trigger">
+      <div class="hover-text-field" *ngIf="!editState" (click)="toggle()" (blur)="onBlur($event)">{{value}}<div (click)="editIconButtonClick()" class="edit-pencil fa fa-pencil">
+        </div>
+      </div>
+      <input class="inputText"  #inlineEditControl [required]="required"  [name]="value" [(ngModel)]="value" [type]="type" 
+      [placeholder]="label"  *ngIf="editState && type == 'text'" />
+  </div>
+  <div class="edit-button-group pull-right"*ngIf="editState">
+      <div class="fa fa-check"  (click)="save()"></div>
+      <div class="fa fa-times" (click)="cancel()"></div>
+  </div>
+</div>
